@@ -6,12 +6,15 @@ import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import Series from "./pages/Series";
 import Search from "./pages/Search";
+import Nav from "./components/Nav";
 
 function App() {
 	return (
 		<ThemeProvider theme={myTheme}>
 			<GlobalStyles />
-			<header></header>
+			<header>
+				<Nav />
+			</header>
 			<main>
 				<Routes>
 					<Route path="/" element={<Home />} />

@@ -5,6 +5,7 @@ const myTheme: DefaultTheme = {
 		black: "#000000",
 		white: "#FFFFFF",
 		background: "#000000",
+		grey1: "#cacaca",
 	},
 	font: "switzer , HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial,Lucida Grande sans-serif",
 	fontWeights: {

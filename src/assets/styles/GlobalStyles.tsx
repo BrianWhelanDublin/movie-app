@@ -34,6 +34,7 @@ const GlobalStyles = createGlobalStyle`
         font-smoothing: antialiased;
         -webkit-font-smoothing: antialiased;
         text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+
     }
 
     body {
@@ -44,6 +45,8 @@ const GlobalStyles = createGlobalStyle`
         line-height: 120%;
         background-color: ${(props) => props.theme.colors.background};
         color: ${(props) => props.theme.colors.white};
+        font-family: ${(props) => props.theme.font};
+        font-weight: ${(props) => props.theme.fontWeights.regular};
         font-size: ${(props) => props.theme.fontSizes.bodyFontSize}px;
     }
 
@@ -254,7 +257,26 @@ const GlobalStyles = createGlobalStyle`
     blockquote {
         margin-bottom: 20px;
     }
+    a{
+        color: ${(props) => props.theme.colors.white};
+        text-decoration: none;
 
+    }
+
+    /**
+    * Helpers
+    */
+
+    .visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
    
 `;
 
