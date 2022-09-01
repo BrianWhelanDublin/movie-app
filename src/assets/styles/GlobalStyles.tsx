@@ -9,7 +9,6 @@ const GlobalStyles = createGlobalStyle`
 /**
 * Reset
 */
-
     * {
         padding: 0;
         margin: 0;
@@ -42,7 +41,10 @@ const GlobalStyles = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         font-smoothing: antialiased;
         text-size-adjust: none;
-        line-height: 120%
+        line-height: 120%;
+        background-color: ${(props) => props.theme.colors.background};
+        color: ${(props) => props.theme.colors.white};
+        font-size: ${(props) => props.theme.fontSizes.bodyFontSize}px;
     }
 
     img,

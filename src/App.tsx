@@ -1,19 +1,25 @@
-import styled from "styled-components";
 import GlobalStyles from "./assets/styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import myTheme from "./assets/styles/DefaultTheme";
-
-export const StyledDiv = styled.div`
-	/* font-family: "switzer"; */
-`;
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Movies from "./pages/Movies";
+import Series from "./pages/Series";
+import Search from "./pages/Search";
 
 function App() {
 	return (
 		<ThemeProvider theme={myTheme}>
 			<GlobalStyles />
-			<StyledDiv>
-				<h1>App</h1>
-			</StyledDiv>
+			<header></header>
+			<main>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/movies" element={<Movies />} />
+					<Route path="/series" element={<Series />} />
+					<Route path="/search" element={<Search />} />
+				</Routes>
+			</main>
 		</ThemeProvider>
 	);
 }
