@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import Loading from "../components/Loading";
 import useFetch from "../hooks/useFetch";
 import { REQUESTS } from "../requests/requests";
-import { MediaItem, TrendingRequest, GenreRequest, Genres } from "../types/types";
+import { TrendingRequest, GenreRequest, Genres } from "../types/types";
 import { randomNumber } from "../utils/helpers";
 
 const Home = () => {
@@ -18,20 +18,24 @@ const Home = () => {
 		return <p>Something has gone wrong.... </p>;
 	}
 
-	const random = randomNumber(1, 20);
-	const headerMedia = data?.results[random];
+	if (data) {
+		const random = randomNumber(1, 20);
+		const headerMedia = data?.results[random];
 
-	console.log(headerMedia);
+		console.log(headerMedia);
 
-	let genres: Array<Genres> | undefined = [];
+		let genres: Array<Genres> | undefined = [];
 
-	if (headerMedia?.media_type === "tv") {
-		genres = tvGenres?.genres;
-	} else {
-		genres = movieGenres?.genres;
+		if (headerMedia?.media_type === "tv") {
+			genres = tvGenres?.genres;
+		} else {
+			genres = movieGenres?.genres;
+		}
+
+		return <>{headerMedia && genres && <Header media={headerMedia} genres={genres} />}</>;
 	}
 
-	return <>{headerMedia && genres && <Header media={headerMedia} genres={genres} />}</>;
+	return <p>No Items found Please refresh</p>;
 };
 
 export default Home;
