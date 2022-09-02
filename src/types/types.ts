@@ -4,7 +4,7 @@
 export interface MediaItem {
 	adult?: Boolean;
 	backdrop_path?: string;
-	st_air_date?: string;
+	first_air_date?: string;
 	genre_ids?: Array<number>;
 	id?: number;
 	media_type?: string;
@@ -32,4 +32,13 @@ export interface TrendingRequest {
 	results: Array<MediaItem>;
 	total_pages: number;
 	total_results: number;
+}
+
+export interface Genres {
+	id: number;
+	name: string;
+}
+
+export interface GenreRequest {
+	genres: Array<Genres>;
 }

@@ -9,6 +9,11 @@ interface Props {
 
 const StyledNav = styled.nav<Props>`
 	background: linear-gradient(${(props) => props.theme.colors.black}, transparent);
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 10;
 	ul {
 		display: flex;
 		flex-direction: row;

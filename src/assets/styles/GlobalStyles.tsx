@@ -246,6 +246,7 @@ const GlobalStyles = createGlobalStyle`
 
     p {
         font-size: ${(props) => props.theme.fontSizes.bodyFontSize}px;
+        font-weight: ${(props) => props.theme.fontWeights.regular};
     }
 
     p,
