@@ -74,7 +74,7 @@ export const HeaderContent = styled.div`
 	}
 
 	@media (${device.lg}) {
-		width: 50%;
+		width: 65%;
 	}
 
 	.title {
@@ -118,7 +118,7 @@ export const HeaderContent = styled.div`
 		}
 		@media (${device.md}) {
 			font-size: 20px;
-			max-width: 100%;
+			max-width: 800px;
 		}
 	}
 
@@ -128,7 +128,6 @@ export const HeaderContent = styled.div`
 		flex-direction: row;
 		flex-wrap: wrap;
 		width: 250px;
-		/* justify-content: space-evenly; */
 
 		@media (${device.sm}) {
 			width: 80%;

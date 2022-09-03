@@ -1,3 +1,4 @@
+import React from "react";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
 import useFetch from "../hooks/useFetch";
@@ -5,7 +6,7 @@ import { REQUESTS } from "../requests/requests";
 import { TrendingRequest, GenreRequest, Genres } from "../types/types";
 import { randomNumber } from "../utils/helpers";
 
-const Movies = () => {
+const Movies: React.FC = () => {
 	const { data, error, status } = useFetch<TrendingRequest>(REQUESTS.trending);
 
 	const { data: movieGenres, status: movieGenreStatus } = useFetch<GenreRequest>(REQUESTS.movieGenres);
