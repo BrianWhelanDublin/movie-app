@@ -9,7 +9,7 @@ export const StyledHeader = styled.section`
 
 	@media (${device.sm}) {
 		height: 80vh;
-		min-height: 800px;
+		min-height: 600px;
 	}
 
 	&::after {
@@ -68,12 +68,12 @@ export const HeaderContent = styled.div`
 		padding: 10% 10% 5% 10%;
 	}
 
-	@media (${device.md}) {
-		width: 70%;
+	@media (${device.lg}) {
+		width: 75%;
 		padding: 10%;
 	}
 
-	@media (${device.lg}) {
+	@media (${device.xl}) {
 		width: 65%;
 	}
 
@@ -85,7 +85,7 @@ export const HeaderContent = styled.div`
 		margin-bottom: 20px;
 
 		@media (${device.sm}) {
-			font-size: 50px;
+			font-size: 48px;
 			margin-bottom: 10px;
 		}
 
@@ -116,7 +116,7 @@ export const HeaderContent = styled.div`
 			display: block;
 			max-width: 500px;
 		}
-		@media (${device.md}) {
+		@media (${device.xl}) {
 			font-size: 20px;
 			max-width: 800px;
 		}

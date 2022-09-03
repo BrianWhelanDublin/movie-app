@@ -12,7 +12,7 @@ export const StyledCard = styled.div<Props>`
 	transition: all 0.3s ease-in-out;
 	cursor: pointer;
 
-	@media (${device.lg}) {
+	@media (${device.xl}) {
 		height: 450px;
 		min-width: 297px;
 		margin-right: 40px;

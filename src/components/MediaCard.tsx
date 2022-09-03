@@ -23,3 +23,18 @@ const MediaCard = React.forwardRef<HTMLDivElement, MediaCardProps>(({ media }, r
 });
 
 export default MediaCard;
+
+export const TestCard: React.FC<MediaCardProps> = ({ media }) => {
+	const smallImageUrl = `${IMAGES.baseUrl}${IMAGES.posterSizes[185]}${media.poster_path}`;
+	const mediumImageUrl = `${IMAGES.baseUrl}${IMAGES.posterSizes[342]}${media.poster_path}`;
+	return (
+		<StyledCard>
+			<img
+				sizes="100vw"
+				src={smallImageUrl}
+				srcSet={`${smallImageUrl} 375w, ${mediumImageUrl} 700w`}
+				alt={`${media.title || media.name} poster`}
+			/>
+		</StyledCard>
+	);
+};

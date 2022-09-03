@@ -15,7 +15,7 @@ export const StyledRow = styled.section<Props>`
 	}
 
 	@media (${device.sm}) {
-		padding: 0 5%;
+		padding: 0 10%;
 		.title {
 			font-size: 30px;
 		}
