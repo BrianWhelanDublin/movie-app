@@ -24,10 +24,10 @@ export interface MediaItem {
 }
 
 /**
- * Trending Api point retquest return
+ * Media Api point request return
  */
 
-export interface TrendingRequest {
+export interface MediaRequest {
 	page: number;
 	results: Array<MediaItem>;
 	total_pages: number;

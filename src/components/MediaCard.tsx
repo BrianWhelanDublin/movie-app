@@ -1,4 +1,4 @@
-import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { IMAGES } from "../requests/requests";
 import { MediaItem } from "../types/types";
 import { StyledCard } from "./MediaCard.styles";
@@ -7,34 +7,15 @@ interface MediaCardProps {
 	media: MediaItem;
 }
 
-const MediaCard = React.forwardRef<HTMLDivElement, MediaCardProps>(({ media }, ref) => {
-	const smallImageUrl = `${IMAGES.baseUrl}${IMAGES.posterSizes[185]}${media.poster_path}`;
+const MediaCard: React.FC<MediaCardProps> = ({ media }) => {
 	const mediumImageUrl = `${IMAGES.baseUrl}${IMAGES.posterSizes[342]}${media.poster_path}`;
-	return (
-		<StyledCard ref={ref}>
-			<img
-				sizes="100vw"
-				src={smallImageUrl}
-				srcSet={`${smallImageUrl} 375w, ${mediumImageUrl} 700w`}
-				alt={`${media.title || media.name} poster`}
-			/>
-		</StyledCard>
-	);
-});
 
-export default MediaCard;
-
-export const TestCard: React.FC<MediaCardProps> = ({ media }) => {
-	const smallImageUrl = `${IMAGES.baseUrl}${IMAGES.posterSizes[185]}${media.poster_path}`;
-	const mediumImageUrl = `${IMAGES.baseUrl}${IMAGES.posterSizes[342]}${media.poster_path}`;
 	return (
 		<StyledCard>
-			<img
-				sizes="100vw"
-				src={smallImageUrl}
-				srcSet={`${smallImageUrl} 375w, ${mediumImageUrl} 700w`}
-				alt={`${media.title || media.name} poster`}
-			/>
+			<LazyLoadImage src={mediumImageUrl} alt={`${media.title || media.name} poster`} />
+			{/* <img src={mediumImageUrl} alt={`${media.title || media.name} poster`} loading="lazy" /> */}
 		</StyledCard>
 	);
 };
+
+export default MediaCard;

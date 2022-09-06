@@ -20,23 +20,7 @@ export const StyledHeader = styled.section`
 		right: 0;
 		left: 0;
 		z-index: 1;
-		background: linear-gradient(
-			0deg,
-			rgba(0, 0, 0, 1) 0%,
-			rgba(0, 0, 0, 0.978) 4.4%,
-			rgba(0, 0, 0, 0.925) 8.55%,
-			rgba(0, 0, 0, 0.857) 12.1%,
-			rgba(0, 0, 0, 0.781) 15.25%,
-			rgba(0, 0, 0, 0.701) 18.15%,
-			rgba(0, 0, 0, 0.62) 20.9%,
-
-			rgba(0, 0, 0, 0.3) 50%,
-			rgba(0, 0, 0, 0.62) 84.75%,
-			rgba(0, 0, 0, 0.701) 87.9%,
-			rgba(0, 0, 0, 0.781) 91.45%,
-			rgba(0, 0, 0, 0.857) 95.6%,
-			rgba(0, 0, 0, 1) 100%
-		);
+		background: ${(props) => props.theme.gradient};
 	}
 
 	.background {

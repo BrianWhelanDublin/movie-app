@@ -1,8 +1,8 @@
 import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import useFetch from "../hooks/useFetch";
-import { TrendingRequest } from "../types/types";
+import { MediaRequest } from "../types/types";
 import Loading from "./Loading";
-import MediaCard, { TestCard } from "./MediaCard";
+import MediaCard from "./MediaCard";
 import { StyledCardContainer, StyledInnerContainer, StyledRow } from "./Row.styles";
 import Slider from "./Slider";
 
@@ -12,7 +12,7 @@ interface RowProps {
 }
 
 const Row: React.FC<RowProps> = ({ request, title }) => {
-	const { data, error, status } = useFetch<TrendingRequest>(request);
+	const { data, error, status } = useFetch<MediaRequest>(request);
 
 	if (status === "loading") {
 		return <Loading />;
@@ -29,7 +29,7 @@ const Row: React.FC<RowProps> = ({ request, title }) => {
 			{data && (
 				<Slider>
 					{data.results.map((el) => (
-						<TestCard media={el} key={el.id} />
+						<MediaCard media={el} key={el.id} />
 					))}
 				</Slider>
 			)}

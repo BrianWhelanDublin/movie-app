@@ -3,11 +3,11 @@ import Header from "../components/Header";
 import Loading from "../components/Loading";
 import useFetch from "../hooks/useFetch";
 import { REQUESTS } from "../requests/requests";
-import { TrendingRequest, GenreRequest, Genres } from "../types/types";
+import { MediaRequest, GenreRequest, Genres } from "../types/types";
 import { randomNumber } from "../utils/helpers";
 
 const Movies: React.FC = () => {
-	const { data, error, status } = useFetch<TrendingRequest>(REQUESTS.trending);
+	const { data, error, status } = useFetch<MediaRequest>(REQUESTS.trending);
 
 	const { data: movieGenres, status: movieGenreStatus } = useFetch<GenreRequest>(REQUESTS.movieGenres);
 	if (status === "loading" || movieGenreStatus === "loading") {
@@ -23,6 +23,7 @@ const Movies: React.FC = () => {
 		const random = randomNumber(1, movies?.length);
 		const headerMedia = movies[random];
 		let genres = movieGenres?.genres;
+
 		return <>{genres && <Header media={headerMedia} genres={genres} />}</>;
 	}
 

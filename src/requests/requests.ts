@@ -2,6 +2,10 @@ export const REQUESTS = {
 	trending: `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_IMDB_API_KEY}`,
 	movieGenres: `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_IMDB_API_KEY}`,
 	tvGenres: `https://api.themoviedb.org/3/genre/tv/list?api_key=${process.env.REACT_APP_IMDB_API_KEY}`,
+	upcommingMovies: `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_IMDB_API_KEY}`,
+	topRatedTv: `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.REACT_APP_IMDB_API_KEY}`,
+	moviesNowPlaying: `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_IMDB_API_KEY}`,
+	tvNowOnAir: `https://api.themoviedb.org/3/tv/on_the_air?api_key=${process.env.REACT_APP_IMDB_API_KEY}&language=en-gb`,
 };
 
 export const IMAGES = {

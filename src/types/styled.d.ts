@@ -7,6 +7,9 @@ declare module "styled-components" {
 			white: string;
 			background: string;
 			grey1: string;
+			grey2: string;
+			grey3: string;
+			grey4: string;
 		};
 		font: string;
 		fontWeights: {
@@ -28,5 +31,6 @@ declare module "styled-components" {
 			bodyFontSize: number;
 			bodyFontSizeSmall: number;
 		};
+		gradient: string;
 	}
 }

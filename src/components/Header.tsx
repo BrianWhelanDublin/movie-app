@@ -1,3 +1,4 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { IMAGES } from "../requests/requests";
 import { Genres, MediaItem } from "../types/types";
 import Button from "./Button";
@@ -9,6 +10,8 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ media, genres }) => {
+	console.log(media.backdrop_path);
+
 	const background = `${IMAGES.baseUrl}${IMAGES.backdropSizes.original}${media.backdrop_path}`;
 	const date = media.release_date || media.first_air_date;
 	const title = media?.title || media?.name;
@@ -17,7 +20,8 @@ const Header: React.FC<HeaderProps> = ({ media, genres }) => {
 
 	return (
 		<StyledHeader>
-			<img className="background" src={background} alt="" />
+			<LazyLoadImage className="background" src={background} alt="" />
+
 			<HeaderContent>
 				<h1 className="title">{title}</h1>
 				<p className="info">

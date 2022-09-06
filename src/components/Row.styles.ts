@@ -7,6 +7,7 @@ interface Props {
 
 export const StyledRow = styled.section<Props>`
 	padding: 5%;
+
 	.title {
 		font-weight: ${(props) => props.theme.fontWeights.medium};
 		letter-spacing: 4px;
@@ -15,7 +16,7 @@ export const StyledRow = styled.section<Props>`
 	}
 
 	@media (${device.sm}) {
-		padding: 0 10%;
+		padding: 0 10% 5% 10%;
 		.title {
 			font-size: 30px;
 		}
