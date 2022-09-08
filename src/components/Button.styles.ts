@@ -1,9 +1,9 @@
 import styled, { DefaultTheme } from "styled-components";
 import { device } from "../assets/styles/breakpoints";
+import { DefaultStyleProps, Scalars } from "../types/types";
 
-interface StyledButtonProps {
-	theme: DefaultTheme;
-	href?: string;
+interface StyledButtonProps extends DefaultStyleProps {
+	href?: Scalars["String"];
 	varient?: "filled" | "outline";
 }
 

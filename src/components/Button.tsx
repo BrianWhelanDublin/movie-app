@@ -1,9 +1,10 @@
+import { Scalars } from "../types/types";
 import { StyledButton, StyledLinkButton } from "./Button.styles";
 
 interface ButtonProps {
 	children: React.ReactNode;
 	onClick?: (e: any) => void;
-	href?: string;
+	href?: Scalars["String"];
 	varient?: "filled" | "outline";
 }
 

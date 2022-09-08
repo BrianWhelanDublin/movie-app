@@ -1,14 +1,14 @@
 import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import useFetch from "../hooks/useFetch";
-import { MediaRequest } from "../types/types";
+import { MediaRequest, Scalars } from "../types/types";
 import Loading from "./Loading";
 import MediaCard from "./MediaCard";
-import { StyledCardContainer, StyledInnerContainer, StyledRow } from "./Row.styles";
+import { RowTitle, StyledCardContainer, StyledInnerContainer, StyledRow } from "./Row.styles";
 import Slider from "./Slider";
 
 interface RowProps {
-	request: string;
-	title: string;
+	request: Scalars["String"];
+	title: Scalars["String"];
 }
 
 const Row: React.FC<RowProps> = ({ request, title }) => {
@@ -24,7 +24,7 @@ const Row: React.FC<RowProps> = ({ request, title }) => {
 
 	return (
 		<StyledRow>
-			<h2 className="title">{title}</h2>
+			<RowTitle>{title}</RowTitle>
 
 			{data && (
 				<Slider>

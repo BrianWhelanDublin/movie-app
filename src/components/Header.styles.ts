@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { device } from "../assets/styles/breakpoints";
+import { DefaultStyleProps } from "../types/types";
 
-export const StyledHeader = styled.section`
+export const StyledHeader = styled.section<DefaultStyleProps>`
 	width: 100vw;
 	height: 75vh;
 	min-height: 300px;
@@ -22,21 +23,9 @@ export const StyledHeader = styled.section`
 		z-index: 1;
 		background: ${(props) => props.theme.gradient};
 	}
-
-	.background {
-		position: absolute;
-		z-index: -1;
-		top: 0;
-		right: 0;
-		left: 0;
-		bottom: 0;
-		height: 100%;
-		width: 100%;
-		object-fit: cover;
-	}
 `;
 
-export const HeaderContent = styled.div`
+export const HeaderContent = styled.div<DefaultStyleProps>`
 	height: 100%;
 	width: 100%;
 	display: flex;
@@ -49,83 +38,85 @@ export const HeaderContent = styled.div`
 
 	@media (${device.sm}) {
 		margin-right: auto;
-		padding: 10% 10% 5% 10%;
+		padding: 10% 10% 5% 7.5%;
 	}
 
 	@media (${device.lg}) {
 		width: 75%;
-		padding: 10%;
+		padding: 10% 10% 10% 7.5%;
 	}
 
 	@media (${device.xl}) {
 		width: 65%;
 	}
+`;
 
-	.title {
-		font-size: 38px;
-		text-transform: uppercase;
-		letter-spacing: 10px;
-		font-weight: ${(props) => props.theme.fontWeights.regular};
-		margin-bottom: 20px;
+export const HeaderTitle = styled.h1<DefaultStyleProps>`
+	font-size: 38px;
+	text-transform: uppercase;
+	letter-spacing: 10px;
+	font-weight: ${(props) => props.theme.fontWeights.regular};
+	margin-bottom: 20px;
 
-		@media (${device.sm}) {
-			font-size: 48px;
-			margin-bottom: 10px;
-		}
-
-		@media (${device.md}) {
-			font-size: 70px;
-			margin-bottom: 30px;
-		}
+	@media (${device.sm}) {
+		font-size: 48px;
+		margin-bottom: 10px;
 	}
 
-	.info {
-		span {
-			display: block;
-		}
-
-		display: flex;
-		width: 200px;
-		justify-content: space-between;
-		font-size: 14px;
-		font-weight: ${(props) => props.theme.fontWeights.medium};
-		@media (${device.md}) {
-			font-size: 16px;
-		}
+	@media (${device.md}) {
+		font-size: 70px;
+		margin-bottom: 30px;
 	}
-	.excerpt {
-		display: none;
+`;
 
-		@media (${device.sm}) {
-			display: block;
-			max-width: 500px;
-		}
-		@media (${device.xl}) {
-			font-size: 20px;
-			max-width: 800px;
-		}
+export const HeaderInfo = styled.p<DefaultStyleProps>`
+	span {
+		display: block;
 	}
 
-	.genres {
-		list-style: none;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		width: 250px;
+	display: flex;
+	width: 200px;
+	justify-content: space-between;
+	font-size: 14px;
+	font-weight: ${(props) => props.theme.fontWeights.medium};
 
-		@media (${device.sm}) {
-			width: 80%;
-		}
+	@media (${device.md}) {
+		font-size: 16px;
+	}
+`;
 
-		li {
-			font-size: 14px;
-			font-weight: ${(props) => props.theme.fontWeights.medium};
+export const HeaderExcerpt = styled.p<DefaultStyleProps>`
+	display: none;
 
-			margin-right: 12px;
+	@media (${device.sm}) {
+		display: block;
+		max-width: 500px;
+	}
 
-			@media (${device.md}) {
-				font-size: 16px;
-			}
-		}
+	@media (${device.xl}) {
+		font-size: 20px;
+		max-width: 800px;
+	}
+`;
+
+export const GenresList = styled.ul<DefaultStyleProps>`
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 250px;
+
+	@media (${device.sm}) {
+		width: 80%;
+	}
+`;
+
+export const GenresItem = styled.li<DefaultStyleProps>`
+	font-size: 14px;
+	font-weight: ${(props) => props.theme.fontWeights.medium};
+	margin-right: 12px;
+
+	@media (${device.md}) {
+		font-size: 16px;
 	}
 `;

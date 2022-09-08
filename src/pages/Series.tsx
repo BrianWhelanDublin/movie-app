@@ -13,7 +13,7 @@ const Series: React.FC = () => {
 		return <Loading />;
 	}
 
-	if (status === "error") {
+	if (error) {
 		return <p>Something has gone wrong.... </p>;
 	}
 

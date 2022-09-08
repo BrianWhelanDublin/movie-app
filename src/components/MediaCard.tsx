@@ -13,7 +13,6 @@ const MediaCard: React.FC<MediaCardProps> = ({ media }) => {
 	return (
 		<StyledCard>
 			<LazyLoadImage src={mediumImageUrl} alt={`${media.title || media.name} poster`} />
-			{/* <img src={mediumImageUrl} alt={`${media.title || media.name} poster`} loading="lazy" /> */}
 		</StyledCard>
 	);
 };

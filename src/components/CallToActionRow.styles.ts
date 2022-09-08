@@ -1,11 +1,8 @@
 import styled, { DefaultTheme } from "styled-components";
 import { device } from "../assets/styles/breakpoints";
+import { DefaultStyleProps } from "../types/types";
 
-interface Props {
-	theme: DefaultTheme;
-}
-
-export const CallToActionRowTitle = styled.div<Props>`
+export const CallToActionRowTitle = styled.div<DefaultStyleProps>`
 	padding: 5%;
 	h2 {
 		font-weight: ${(props) => props.theme.fontWeights.medium};
@@ -39,7 +36,7 @@ export const CallToActionRowTitle = styled.div<Props>`
 	}
 `;
 
-export const StyledCallToActionRow = styled.section<Props>`
+export const StyledCallToActionRow = styled.section<DefaultStyleProps>`
 	width: 100vw;
 	height: 400px;
 	position: relative;
@@ -49,24 +46,8 @@ export const StyledCallToActionRow = styled.section<Props>`
 		height: 620px;
 	}
 
-	@media (${device.md}) {
-		height: 650px;
-	}
-
-	@media (${device.lg}) {
+	@media (${device.xl}) {
 		height: 750px;
-	}
-
-	.background {
-		z-index: -1;
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		left: 0;
-		height: 100%;
-		width: 100%;
-		object-fit: cover;
 	}
 
 	&::after {
@@ -188,7 +169,7 @@ export const StyledCallToActionRow = styled.section<Props>`
 	}
 `;
 
-export const Cta = styled.div<Props>`
+export const Cta = styled.div<DefaultStyleProps>`
 	position: absolute;
 	z-index: 2;
 	bottom: 2%;
@@ -199,9 +180,9 @@ export const Cta = styled.div<Props>`
 	}
 `;
 
-export const Dots = styled.div<Props>`
+export const Dots = styled.div<DefaultStyleProps>`
 	position: absolute;
-	bottom: 50px;
+	bottom: 40px;
 	z-index: 2;
 	display: flex;
 	align-items: center;
@@ -209,7 +190,7 @@ export const Dots = styled.div<Props>`
 	width: 100%;
 `;
 
-export const Dot = styled.span<Props>`
+export const Dot = styled.span<DefaultStyleProps>`
 	display: block;
 	height: 1px;
 	width: 8px;

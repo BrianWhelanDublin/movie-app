@@ -3,16 +3,17 @@ import { useState } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import useFetch from "../hooks/useFetch";
 import { IMAGES } from "../requests/requests";
-import { MediaRequest } from "../types/types";
+import { MediaRequest, Scalars } from "../types/types";
+import Background from "./Background";
 import Button from "./Button";
 import { CallToActionRowTitle, Cta, Dot, Dots, StyledCallToActionRow } from "./CallToActionRow.styles";
 import Loading from "./Loading";
 
 interface CallToActionRowProps {
-	request: string;
-	title: string;
-	ctaText: string;
-	ctaLink: string;
+	request: Scalars["String"];
+	title: Scalars["String"];
+	ctaText: Scalars["String"];
+	ctaLink: Scalars["String"];
 }
 
 const CallToActionRow: React.FC<CallToActionRowProps> = ({ request, title, ctaText, ctaLink }) => {
@@ -56,8 +57,7 @@ const CallToActionRow: React.FC<CallToActionRowProps> = ({ request, title, ctaTe
 				<AnimatePresence>
 					<motion.div key={index} initial={{ opacity: 0 }} transition={{ duration: 1.5 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
 						{data && (
-							<motion.img
-								className="background"
+							<Background
 								src={`${IMAGES.baseUrl}${IMAGES.backdropSizes.original}${data?.results[index]?.backdrop_path as string}`}
 								alt=""
 							/>
@@ -66,7 +66,7 @@ const CallToActionRow: React.FC<CallToActionRowProps> = ({ request, title, ctaTe
 				</AnimatePresence>
 
 				<AnimatePresence>
-					<motion.div className="poster">
+					<div className="poster">
 						{data && (
 							<motion.img
 								key={index}
@@ -78,7 +78,7 @@ const CallToActionRow: React.FC<CallToActionRowProps> = ({ request, title, ctaTe
 								alt=""
 							/>
 						)}
-					</motion.div>
+					</div>
 				</AnimatePresence>
 
 				<AnimatePresence>
