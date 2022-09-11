@@ -22,7 +22,7 @@ const Home: React.FC = () => {
 
 	if (data !== undefined) {
 		const random = randomNumber(1, 20);
-		const headerMedia = data?.results[random];
+		const headerMedia = data?.results[random - 1];
 
 		let genres: Array<Genres> | undefined = [];
 

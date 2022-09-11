@@ -23,6 +23,11 @@ export interface Requests {
 	topRatedTv: Scalars["String"];
 	moviesNowPlaying: Scalars["String"];
 	tvNowOnAir: Scalars["String"];
+	moviesLatest: Scalars["String"];
+	popularMovies: Scalars["String"];
+	topRatedMovies: Scalars["String"];
+	popularTv: Scalars["String"];
+	trendingTv: Scalars["String"];
 }
 
 /**

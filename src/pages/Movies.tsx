@@ -1,6 +1,9 @@
 import React from "react";
+import GenresRow from "../components/GenresRow";
+
 import Header from "../components/Header";
 import Loading from "../components/Loading";
+import Row from "../components/Row";
 import useFetch from "../hooks/useFetch";
 import { REQUESTS } from "../requests/requests";
 import { MediaRequest, GenreRequest, Genres } from "../types/types";
@@ -21,10 +24,19 @@ const Movies: React.FC = () => {
 	if (data) {
 		const movies = data?.results?.filter((el) => el.media_type === "movie");
 		const random = randomNumber(1, movies?.length);
-		const headerMedia = movies[random];
+		const headerMedia = movies[random - 1];
 		let genres = movieGenres?.genres;
 
-		return <>{genres && <Header media={headerMedia} genres={genres} />}</>;
+		return (
+			<>
+				{genres && <Header media={headerMedia} genres={genres} />}
+				<GenresRow mediaType="movie" />
+				<Row request={REQUESTS.moviesNowPlaying} title="Movies in Cinemas Now" />
+				<Row request={REQUESTS.topRatedMovies} title="Top Rated Movies" />
+				<Row request={REQUESTS.popularMovies} title="Popular Movies" />
+				<Row request={REQUESTS.upcommingMovies} title="Upcomming Movies" />
+			</>
+		);
 	}
 
 	/**

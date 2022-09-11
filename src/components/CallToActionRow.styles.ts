@@ -61,35 +61,6 @@ export const StyledCallToActionRow = styled.section<DefaultStyleProps>`
 		background: ${(props) => props.theme.gradient};
 	}
 
-	.poster {
-		z-index: 2;
-		position: absolute;
-		top: 20%;
-		left: 10%;
-		overflow: hidden;
-		width: 150px;
-
-		@media (${device.sm}) {
-			width: 250px;
-			left: 12%;
-		}
-
-		@media (${device.md}) {
-			width: 280px;
-			left: 20%;
-		}
-
-		@media (${device.xl}) {
-			width: 320px;
-			left: 22.5%;
-		}
-
-		img {
-			width: 100%;
-			height: 100%;
-		}
-	}
-
 	.content {
 		position: absolute;
 		z-index: 2;
@@ -120,11 +91,11 @@ export const StyledCallToActionRow = styled.section<DefaultStyleProps>`
 			max-width: 600px;
 
 			@media (${device.sm}) {
-				font-size: 28px;
+				font-size: 22px;
 			}
-			@media (${device.md}) {
+			/* @media (${device.md}) {
 				font-size: 36px;
-			}
+			} */
 			@media (${device.lg}) {
 				font-size: 55px;
 			}
@@ -166,6 +137,35 @@ export const StyledCallToActionRow = styled.section<DefaultStyleProps>`
 				}
 			}
 		}
+	}
+`;
+
+export const CtaPoster = styled.div<DefaultStyleProps>`
+	z-index: 2;
+	position: absolute;
+	top: 20%;
+	left: 10%;
+	overflow: hidden;
+	width: 150px;
+
+	@media (${device.sm}) {
+		width: 250px;
+		left: 12%;
+	}
+
+	@media (${device.md}) {
+		width: 280px;
+		left: 20%;
+	}
+
+	@media (${device.xl}) {
+		width: 320px;
+		left: 22.5%;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
 	}
 `;
 
