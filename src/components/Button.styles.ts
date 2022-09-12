@@ -9,10 +9,10 @@ interface StyledButtonProps extends DefaultStyleProps {
 
 export const StyledButton = styled.button<StyledButtonProps>`
 	border: 1px solid ${(props) => props.theme.colors.white};
-	padding: 6px 10px;
+	padding: 4px 8px;
 	border-radius: 20px;
 	transition: all 0.2s ease-in;
-	font-size: 14px;
+	font-size: 12px;
 	background-color: ${(props) => (props.varient === "filled" ? props.theme.colors.white : "transparent")};
 	color: ${(props) => (props.varient === "filled" ? props.theme.colors.black : props.theme.colors.white)};
 

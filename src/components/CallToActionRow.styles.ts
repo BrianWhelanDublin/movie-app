@@ -1,4 +1,4 @@
-import styled, { DefaultTheme } from "styled-components";
+import styled from "styled-components";
 import { device } from "../assets/styles/breakpoints";
 import { DefaultStyleProps } from "../types/types";
 
@@ -21,13 +21,14 @@ export const CallToActionRowTitle = styled.div<DefaultStyleProps>`
 	}
 
 	@media (${device.sm}) {
-		padding: 5% 10%;
+		padding: 2.5% 10%;
 		display: flex;
 		justify-content: space-between;
 		a {
 			display: flex;
 			position: relative;
 			z-index: 2;
+			font-size: 14px;
 		}
 	}
 
@@ -38,7 +39,7 @@ export const CallToActionRowTitle = styled.div<DefaultStyleProps>`
 
 export const StyledCallToActionRow = styled.section<DefaultStyleProps>`
 	width: 100vw;
-	height: 400px;
+	height: 380px;
 	position: relative;
 	margin: 40px 0;
 
@@ -60,81 +61,81 @@ export const StyledCallToActionRow = styled.section<DefaultStyleProps>`
 		z-index: 1;
 		background: ${(props) => props.theme.gradient};
 	}
+`;
 
-	.content {
-		position: absolute;
-		z-index: 2;
-		right: 5%;
-		top: 20%;
-		width: 40%;
-		height: 225px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		align-items: flex-start;
-		text-align: left;
+export const CtaContent = styled.div<DefaultStyleProps>`
+	position: absolute;
+	z-index: 2;
+	right: 5%;
+	top: 20%;
+	width: 50%;
+	height: 180px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	text-align: left;
+	padding: 3%;
+
+	@media (${device.sm}) {
+		height: 375px;
+	}
+
+	@media (${device.xl}) {
+		height: 480px;
+		right: 10%;
+	}
+
+	h3 {
+		font-weight: ${(props) => props.theme.fontWeights.regular};
+		letter-spacing: 4px;
+		text-transform: uppercase;
+		font-size: 22px;
+		max-width: 600px;
 
 		@media (${device.sm}) {
-			height: 375px;
-		}
-
-		@media (${device.xl}) {
-			height: 480px;
-			right: 10%;
-		}
-
-		h3 {
-			font-weight: ${(props) => props.theme.fontWeights.regular};
-			letter-spacing: 4px;
-			text-transform: uppercase;
 			font-size: 22px;
-			max-width: 600px;
-
-			@media (${device.sm}) {
-				font-size: 22px;
-			}
-			/* @media (${device.md}) {
-				font-size: 36px;
-			} */
-			@media (${device.lg}) {
-				font-size: 55px;
-			}
 		}
-
-		p {
-			display: none;
-			max-width: 600px;
-			@media (${device.sm}) {
-				display: block;
-				padding-right: 20px;
-			}
-			@media (${device.lg}) {
-				font-size: 18px;
-			}
+		@media (${device.md}) {
+			font-size: 36px;
 		}
+		@media (${device.lg}) {
+			font-size: 55px;
+		}
+	}
+`;
 
-		&-btns {
-			flex-direction: column;
-			justify-content: space-between;
-			align-items: flex-start;
-			text-align: left;
+export const CtaInfo = styled.div<DefaultStyleProps>`
+	width: 80%;
+	font-size: 12px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	span {
+		display: block;
+	}
+`;
 
-			.arrows {
-				margin-top: 20px;
+export const CtaArrows = styled.div<DefaultStyleProps>`
+	display: none;
 
-				@media (${device.sm}) {
-					margin-top: 40px;
-				}
+	@media (${device.sm}) {
+		display: block;
+		margin-top: 40px;
+	}
 
-				svg {
-					transform: scale(1.4);
-					margin-right: 20px;
+	svg {
+		transform: scale(1.4);
+		margin-right: 20px;
+		transition: all 0.2s ease-in-out;
 
-					@media (${device.sm}) {
-						transform: scale(2);
-						margin-right: 40px;
-					}
-				}
+		@media (${device.sm}) {
+			transform: scale(2);
+			margin-right: 40px;
+
+			&:hover {
+				transform: scale(2.4);
 			}
 		}
 	}
@@ -146,7 +147,7 @@ export const CtaPoster = styled.div<DefaultStyleProps>`
 	top: 20%;
 	left: 10%;
 	overflow: hidden;
-	width: 150px;
+	width: 120px;
 
 	@media (${device.sm}) {
 		width: 250px;
@@ -172,7 +173,7 @@ export const CtaPoster = styled.div<DefaultStyleProps>`
 export const Cta = styled.div<DefaultStyleProps>`
 	position: absolute;
 	z-index: 2;
-	bottom: 2%;
+	bottom: 5%;
 	left: calc(50% - 60px);
 
 	@media (${device.sm}) {
@@ -182,7 +183,7 @@ export const Cta = styled.div<DefaultStyleProps>`
 
 export const Dots = styled.div<DefaultStyleProps>`
 	position: absolute;
-	bottom: 40px;
+	bottom: 80px;
 	z-index: 2;
 	display: flex;
 	align-items: center;

@@ -1,12 +1,23 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { MutableRefObject, useRef, useState } from "react";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import useFetch from "../hooks/useFetch";
+import { Direction, useSwipe } from "../hooks/useSwipe";
 import { IMAGES } from "../requests/requests";
 import { MediaRequest, Scalars } from "../types/types";
 import Background from "./Background";
 import Button from "./Button";
-import { CallToActionRowTitle, Cta, CtaPoster, Dot, Dots, StyledCallToActionRow } from "./CallToActionRow.styles";
+import {
+	CallToActionRowTitle,
+	Cta,
+	CtaArrows,
+	CtaContent,
+	CtaInfo,
+	CtaPoster,
+	Dot,
+	Dots,
+	StyledCallToActionRow,
+} from "./CallToActionRow.styles";
 import Loading from "./Loading";
 
 interface CallToActionRowProps {
@@ -18,6 +29,7 @@ interface CallToActionRowProps {
 
 const CallToActionRow: React.FC<CallToActionRowProps> = ({ request, title, ctaText, ctaLink }) => {
 	const { data, error, status } = useFetch<MediaRequest>(request);
+	const swipeContainer = useRef<HTMLElement>(null);
 
 	const [index, setIndex] = useState<number>(0);
 	const length = data?.results?.length as number;
@@ -26,7 +38,7 @@ const CallToActionRow: React.FC<CallToActionRowProps> = ({ request, title, ctaTe
 	const date = media?.release_date || media?.first_air_date;
 	const mediaTitle = media?.title || media?.name;
 
-	const handleClick = (direction: "left" | "right") => {
+	const handleClick = (direction: Direction) => {
 		if (direction === "right") {
 			if (index < length - 1) {
 				setIndex((state) => (state += 1));
@@ -44,6 +56,8 @@ const CallToActionRow: React.FC<CallToActionRowProps> = ({ request, title, ctaTe
 		}
 	};
 
+	useSwipe(swipeContainer as MutableRefObject<HTMLElement>, handleClick);
+
 	if (status === "loading") {
 		return <Loading />;
 	}
@@ -53,10 +67,11 @@ const CallToActionRow: React.FC<CallToActionRowProps> = ({ request, title, ctaTe
 	}
 
 	return (
-		<StyledCallToActionRow>
+		<StyledCallToActionRow ref={swipeContainer}>
 			<CallToActionRowTitle>
 				<h2>{title}</h2> <Button href={ctaLink}>{ctaText}</Button>
 			</CallToActionRowTitle>
+
 			<AnimatePresence>
 				<motion.div key={index} initial={{ opacity: 0 }} transition={{ duration: 1.5 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
 					{data && <Background src={`${IMAGES.baseUrl}${IMAGES.backdropSizes.original}${media?.backdrop_path}`} alt="" />}
@@ -80,7 +95,8 @@ const CallToActionRow: React.FC<CallToActionRowProps> = ({ request, title, ctaTe
 			</AnimatePresence>
 
 			<AnimatePresence>
-				<motion.div
+				<CtaContent
+					as={motion.div}
 					key={index}
 					className="content"
 					initial={{ opacity: 0 }}
@@ -90,20 +106,22 @@ const CallToActionRow: React.FC<CallToActionRowProps> = ({ request, title, ctaTe
 				>
 					<h3>{mediaTitle}</h3>
 					{/* <p>{data?.results[index]?.overview}</p> */}
-					<span>{date?.split("-")[0]}</span>
-					<span>{media?.media_type === "tv" ? "Series" : "Movie"}</span>
-					<span>{media?.vote_average ? `${Math.ceil(media?.vote_average * 10)}%` : ""}</span>
+					<CtaInfo>
+						<span>{date?.split("-")[0]}</span>
+						<span>{media?.media_type === "tv" ? "Series" : "Movie"}</span>
+						<span>{media?.vote_average ? `${Math.ceil(media?.vote_average * 10)}%` : ""}</span>
+					</CtaInfo>
 					<Button varient="filled" href={"/movies"}>
 						Find Out More
 					</Button>
 
-					<div className="arrows">
+					<CtaArrows>
 						<BsArrowLeft onClick={() => handleClick("left")} />
 						<BsArrowRight onClick={() => handleClick("right")} />
-					</div>
-				</motion.div>
+					</CtaArrows>
+				</CtaContent>
 
-				<Cta className="cta">
+				<Cta>
 					<Button href={ctaLink}>{ctaText}</Button>
 				</Cta>
 			</AnimatePresence>

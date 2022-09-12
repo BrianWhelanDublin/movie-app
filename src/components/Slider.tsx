@@ -1,4 +1,4 @@
-import React, { MutableRefObject, ReactNode, useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import { ArrowContainer, SliderContainer, SliderInnerContainer, SliderItem } from "./Slider.styles";
 import { BsArrowRight } from "react-icons/bs";
 import { BsArrowLeft } from "react-icons/bs";
@@ -20,23 +20,22 @@ const Slider: React.FC<SliderProps> = ({ children }) => {
 		_setIndex(data);
 	};
 
-	const rezize = () => {
-		const itemsPerScreen = parseInt(getComputedStyle(innerContainer.current).getPropertyValue("--items-per-screen"));
-		const cur = currentIndex.current;
-		const itemsScrolled = itemsPerScreen * cur;
-		const itemsLeft = numberOfCards - itemsPerScreen - itemsScrolled;
-		if (itemsLeft <= 0) {
-			setIndex(cur - 1 + (numberOfCards - itemsScrolled) / itemsPerScreen);
-		}
-	};
-
-	const resizeHandler = debounce(rezize, 100);
-
 	useEffect(() => {
+		const rezize = () => {
+			const itemsPerScreen = parseInt(getComputedStyle(innerContainer.current).getPropertyValue("--items-per-screen"));
+			const cur = currentIndex.current;
+			const itemsScrolled = itemsPerScreen * cur;
+			const itemsLeft = numberOfCards - itemsPerScreen - itemsScrolled;
+			if (itemsLeft <= 0) {
+				setIndex(cur - 1 + (numberOfCards - itemsScrolled) / itemsPerScreen);
+			}
+		};
+		const resizeHandler = debounce(rezize, 100);
+
 		window.addEventListener("resize", resizeHandler);
 
 		return () => window.removeEventListener("resize", resizeHandler);
-	}, []);
+	}, [numberOfCards]);
 
 	const handleClick = (direction: string, slide: number) => {
 		// const numberOfCards = React.Children.toArray(children).length;
