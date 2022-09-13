@@ -12,7 +12,8 @@ type Cache = { [url: string]: { data: Array<any>; hasMore: boolean } };
 type Action =
 	| { type: "loading" }
 	| { type: "fetched"; payload: { data: Array<any>; hasMore: boolean } }
-	| { type: "error"; payload: Error };
+	| { type: "error"; payload: Error }
+	| { type: "reset" };
 
 const usePaginatedQuery = <T = unknown>(url: string, page: number = 1) => {
 	const cache = useRef<Cache>({});
@@ -28,6 +29,8 @@ const usePaginatedQuery = <T = unknown>(url: string, page: number = 1) => {
 
 	const paginatedReducer = (state: State<T> = initialState, action: Action): State<T> => {
 		switch (action.type) {
+			case "reset":
+				return { ...initialState };
 			case "loading":
 				return { ...state, loading: true };
 			case "fetched":
@@ -45,6 +48,10 @@ const usePaginatedQuery = <T = unknown>(url: string, page: number = 1) => {
 		if (!url) return;
 
 		cancelRequest.current = false;
+
+		if (page === 1) {
+			dispatch({ type: "reset" });
+		}
 
 		const fetchData = async () => {
 			dispatch({ type: "loading" });

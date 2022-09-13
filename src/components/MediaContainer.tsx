@@ -38,10 +38,12 @@ const MediaContainer = React.memo<MediaContainerProps>(({ items, loading, setPag
 		<StyledMediaContainer>
 			{items ? (
 				items?.map((el, i) => {
-					if (items.length === i + 1) {
-						return <MediaCardRef ref={lastElementRef} key={el.id} media={el} />;
-					} else {
-						return <MediaCard key={el?.id} media={el} />;
+					if (el.poster_path !== null) {
+						if (items.length === i + 1) {
+							return <MediaCardRef ref={lastElementRef} key={`${el.id}-${i}`} media={el} />;
+						} else {
+							return <MediaCard key={`${el.id}-${i}`} media={el} />;
+						}
 					}
 				})
 			) : (
