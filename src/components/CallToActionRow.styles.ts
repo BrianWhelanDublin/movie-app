@@ -189,6 +189,9 @@ export const Dots = styled.div<DefaultStyleProps>`
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+	@media (${device.sm}) {
+		bottom: 50px;
+	}
 `;
 
 export const Dot = styled.span<DefaultStyleProps>`

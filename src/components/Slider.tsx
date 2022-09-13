@@ -42,7 +42,6 @@ const Slider: React.FC<SliderProps> = ({ children }) => {
 		const itemsPerScreen = parseInt(getComputedStyle(innerContainer.current).getPropertyValue("--items-per-screen"));
 		const itemsScrolled = itemsPerScreen * slide;
 		const itemsLeft = numberOfCards - itemsPerScreen - itemsScrolled;
-		console.log(numberOfCards, itemsScrolled, itemsLeft);
 
 		if (direction === "right") {
 			if (itemsLeft > 0) {
@@ -52,7 +51,6 @@ const Slider: React.FC<SliderProps> = ({ children }) => {
 			}
 		}
 		if (direction === "left") {
-			console.log(slide);
 			if (slide < 0) {
 				setIndex(0);
 			} else {

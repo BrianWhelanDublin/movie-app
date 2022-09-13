@@ -13,6 +13,8 @@ export const REQUESTS: Requests = {
 	topRatedMovies: `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_IMDB_API_KEY}&language=en-US&page=1`,
 	popularTv: `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_IMDB_API_KEY}&language=en-US&page=1`,
 	trendingTv: `https://api.themoviedb.org/3/trending/tv/week?api_key=${process.env.REACT_APP_IMDB_API_KEY}&language=en-US`,
+	moviesByGenre: `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_IMDB_API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=`,
+	tvByGenre: `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_IMDB_API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=`,
 };
 
 export const IMAGES: Images = {

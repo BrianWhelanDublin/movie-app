@@ -7,6 +7,7 @@ import Movies from "./pages/Movies";
 import Series from "./pages/Series";
 import Search from "./pages/Search";
 import Nav from "./components/Nav";
+import Genres from "./pages/Genres";
 
 function App() {
 	return (
@@ -21,6 +22,7 @@ function App() {
 					<Route path="/movies" element={<Movies />} />
 					<Route path="/series" element={<Series />} />
 					<Route path="/search" element={<Search />} />
+					<Route path="/genres/:type/:genre" element={<Genres />} />
 				</Routes>
 			</main>
 		</ThemeProvider>

@@ -14,8 +14,6 @@ const GenresRow: React.FC<GenresRowProps> = ({ mediaType }) => {
 	const request = mediaType === "movie" ? REQUESTS.movieGenres : REQUESTS.tvGenres;
 	const { data, error, status } = useFetch<GenreRequest>(request);
 
-	console.log(data);
-
 	if (status === "loading") {
 		return <Loading />;
 	}
@@ -29,7 +27,7 @@ const GenresRow: React.FC<GenresRowProps> = ({ mediaType }) => {
 			{data && (
 				<Slider>
 					{data.genres.map((el) => (
-						<GenreCard href="#" key={el.id}>
+						<GenreCard href={`/genres/${mediaType === "movie" ? "movie" : "tv"}/${el.id}`} key={el.id}>
 							{el.name}
 						</GenreCard>
 					))}
