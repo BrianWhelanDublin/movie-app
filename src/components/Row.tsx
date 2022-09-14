@@ -14,6 +14,8 @@ interface RowProps {
 const Row: React.FC<RowProps> = ({ request, title }) => {
 	const { data, error, status } = useFetch<MediaRequest>(request);
 
+	const mediaType = request.includes("tv") ? "series" : "movie";
+
 	if (status === "loading") {
 		return <Loading />;
 	}
@@ -29,7 +31,7 @@ const Row: React.FC<RowProps> = ({ request, title }) => {
 			{data && (
 				<Slider>
 					{data.results.map((el) => (
-						<MediaCard media={el} key={el.id} />
+						<MediaCard media={el} key={el.id} href={`/${el.media_type ?? mediaType}/${el.id}`} />
 					))}
 				</Slider>
 			)}

@@ -16,6 +16,7 @@ export type Scalars = {
  */
 
 export interface Requests {
+	baseUrl: Scalars["String"];
 	trending: Scalars["String"];
 	movieGenres: Scalars["String"];
 	tvGenres: Scalars["String"];
@@ -94,6 +95,119 @@ export interface MediaItem {
 	release_date?: Maybe<Scalars["String"]>;
 	title?: Maybe<Scalars["String"]>;
 	video?: Maybe<Scalars["Boolean"]>;
+}
+
+export interface MediaDetails {
+	adult?: Maybe<Scalars["Boolean"]>;
+	backdrop_path?: Maybe<Scalars["String"]>;
+	genres?: Maybe<Array<Genres>>;
+	homepage?: Maybe<Scalars["String"]>;
+	id?: Maybe<Scalars["Int"]>;
+	original_language?: Maybe<Scalars["String"]>;
+	overview?: Maybe<Scalars["String"]>;
+	popularity?: Maybe<Scalars["Int"]>;
+	poster_path?: Maybe<Scalars["String"]>;
+	production_companies?: Maybe<Array<Company>>;
+	production_countries?: Maybe<Array<Country>>;
+	vote_average: Maybe<Scalars["Int"]>;
+	vote_count: Maybe<Scalars["Int"]>;
+	spoken_languages?: Maybe<Array<Language>>;
+	status: Maybe<Scalars["String"]>;
+	tagline: Maybe<Scalars["String"]>;
+}
+
+export interface MovieDetails extends MediaDetails {
+	belongs_to_collection: Maybe<Collection>;
+	budget?: Maybe<Scalars["Int"]>;
+	imdb_id?: Maybe<Scalars["String"]>;
+	original_title?: Maybe<Scalars["String"]>;
+	release_date?: Maybe<Scalars["String"]>;
+	revenue?: Maybe<Scalars["Int"]>;
+	runtime?: Maybe<Scalars["Int"]>;
+	title?: Maybe<Scalars["String"]>;
+	video?: Maybe<Scalars["Boolean"]>;
+}
+
+export interface TvDetails extends MediaDetails {
+	created_by?: Maybe<Array<Person>>;
+	episode_run_time?: Maybe<Array<number>>;
+	first_air_date?: Maybe<Scalars["String"]>;
+	in_production?: Maybe<Scalars["Boolean"]>;
+	languages?: Maybe<Array<Scalars["String"]>>;
+	last_air_date?: Maybe<Episode>;
+	name?: Maybe<Array<Scalars["String"]>>;
+	networks?: Maybe<Array<Network>>;
+	next_episode_to_air?: Maybe<Episode>;
+	number_of_episodes?: Maybe<Scalars["Int"]>;
+	number_of_seasons?: Maybe<Scalars["Int"]>;
+	origin_country?: Maybe<Array<Scalars["String"]>>;
+	original_name?: Maybe<Scalars["String"]>;
+	seasons?: Maybe<Array<Season>>;
+	type: Maybe<Scalars["String"]>;
+}
+
+export interface Collection {
+	backdrop_path?: Maybe<Scalars["String"]>;
+	id?: Maybe<Scalars["Int"]>;
+	name?: Maybe<Scalars["String"]>;
+	poster_path?: Maybe<Scalars["String"]>;
+}
+
+export interface Company {
+	id?: Maybe<Scalars["Int"]>;
+	logo_path?: Maybe<Scalars["String"]>;
+	name?: Maybe<Scalars["String"]>;
+	origin_country?: Maybe<Scalars["String"]>;
+}
+
+export interface Country {
+	iso_3166_1?: Maybe<Scalars["String"]>;
+	name?: Maybe<Scalars["String"]>;
+}
+
+export interface Language {
+	english_name?: Maybe<Scalars["String"]>;
+	iso_639_1?: Maybe<Scalars["String"]>;
+	name?: Maybe<Scalars["String"]>;
+}
+
+export interface Person {
+	credit_id?: Maybe<Scalars["String"]>;
+	gender?: Maybe<Scalars["Int"]>;
+	id?: Maybe<Scalars["Int"]>;
+	name?: Maybe<Scalars["String"]>;
+	profile_path?: Maybe<Scalars["String"]>;
+}
+
+export interface Episode {
+	air_date?: Maybe<Scalars["String"]>;
+	episode_number?: Maybe<Scalars["Int"]>;
+	id?: Maybe<Scalars["Int"]>;
+	name?: Maybe<Scalars["String"]>;
+	overview?: Maybe<Scalars["String"]>;
+	runtime?: Maybe<Scalars["Int"]>;
+	season_number?: Maybe<Scalars["Int"]>;
+	show_id?: Maybe<Scalars["Int"]>;
+	still_path?: Maybe<Scalars["String"]>;
+	vote_average?: Maybe<Scalars["Int"]>;
+	vote_count?: Maybe<Scalars["Int"]>;
+}
+
+export interface Network {
+	id: Maybe<Scalars["Int"]>;
+	logo_path: Maybe<Scalars["String"]>;
+	name: Maybe<Scalars["String"]>;
+	origin_country: Maybe<Scalars["String"]>;
+}
+
+export interface Season {
+	air_date: Maybe<Scalars["String"]>;
+	episode_count: Maybe<Scalars["Int"]>;
+	id: Maybe<Scalars["Int"]>;
+	name: Maybe<Scalars["String"]>;
+	overview: Maybe<Scalars["String"]>;
+	poster_path: Maybe<Scalars["String"]>;
+	season_number: Maybe<Scalars["Int"]>;
 }
 
 /**

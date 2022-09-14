@@ -1,30 +1,40 @@
+import { useParams } from "react-router-dom";
 import { IMAGES } from "../requests/requests";
-import { Genres, MediaItem } from "../types/types";
+import { Genres, MediaItem, MovieDetails, TvDetails } from "../types/types";
 import Background from "./Background";
 import Button from "./Button";
-import { GenresItem, GenresList, HeaderContent, HeaderExcerpt, HeaderInfo, HeaderTitle, StyledHeader } from "./Header.styles";
+import { GenresItem, GenresList, HeaderContent, HeaderExcerpt, HeaderInfo, HeaderPoster, HeaderTitle, StyledHeader } from "./Header.styles";
 
 interface HeaderProps {
-	media: MediaItem;
-	genres: Array<Genres>;
+	media: MediaItem | MovieDetails | TvDetails;
+	genres?: Array<Genres>;
+	showPoster?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ media, genres }) => {
-	const background = `${IMAGES.baseUrl}${IMAGES.backdropSizes.original}${media.backdrop_path}`;
-	const date = media.release_date || media.first_air_date;
-	const title = media?.title || media?.name;
+const Header: React.FC<HeaderProps> = ({ media, genres, showPoster }) => {
+	let params = useParams();
+	const background = `${IMAGES.baseUrl}${IMAGES.backdropSizes.original}${media?.backdrop_path}`;
+	const poster = `${IMAGES.baseUrl}${IMAGES.posterSizes[500]}${media?.poster_path}`;
+	let date = (media as MediaItem | MovieDetails)?.release_date || (media as MediaItem | TvDetails)?.first_air_date;
+	const title = (media as MediaItem | MovieDetails)?.title || (media as MediaItem | TvDetails)?.name;
 
-	const mediaGenres = genres.filter((el) => media.genre_ids?.includes(el.id));
+	let mediaGenres: Array<Genres>;
+
+	if (genres) {
+		mediaGenres = genres?.filter((el) => (media as MediaItem)?.genre_ids?.includes(el.id));
+	} else {
+		mediaGenres = (media as MovieDetails | TvDetails)?.genres as Array<Genres>;
+	}
 
 	return (
 		<StyledHeader>
+			{/* TOO DO : Add a default background in the case there is no backdrop returned */}
 			<Background src={background} alt="" />
-
 			<HeaderContent>
 				<HeaderTitle>{title ?? ""}</HeaderTitle>
 				<HeaderInfo>
 					<span>{date?.split("-")[0]}</span>
-					<span>{media.media_type === "tv" ? "Series" : "Movie"}</span>
+					<span>{params?.type ?? (media as MediaItem).media_type === "tv" ? "Series" : "Movie"}</span>
 					<span>{media?.vote_average ? `${Math.ceil(media?.vote_average * 10)}%` : ""}</span>
 				</HeaderInfo>
 				<HeaderExcerpt>{media.overview ?? ""}</HeaderExcerpt>
@@ -40,6 +50,7 @@ const Header: React.FC<HeaderProps> = ({ media, genres }) => {
 
 				<Button href={"#"}>Find Out More</Button>
 			</HeaderContent>
+			{showPoster && <HeaderPoster src={poster} />}
 		</StyledHeader>
 	);
 };

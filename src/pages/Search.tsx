@@ -62,7 +62,7 @@ const Search: React.FC = () => {
 				</SearchInput>
 			</SideBar>
 
-			{data.length > 1 && <MediaContainer items={data} loading={loading} setPage={setPage} hasMore={hasMore} />}
+			{data.length > 1 && <MediaContainer items={data} loading={loading} setPage={setPage} hasMore={hasMore} mediaType={currentRadioValue} />}
 		</>
 	);
 };

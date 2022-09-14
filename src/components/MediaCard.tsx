@@ -6,23 +6,24 @@ import { StyledCard } from "./MediaCard.styles";
 
 interface MediaCardProps {
 	media: MediaItem;
+	href?: string;
 }
 
-const MediaCard: React.FC<MediaCardProps> = ({ media }) => {
+const MediaCard: React.FC<MediaCardProps> = ({ media, href }) => {
 	const mediumImageUrl = `${IMAGES.baseUrl}${IMAGES.posterSizes[342]}${media.poster_path}`;
 
 	return (
-		<StyledCard>
+		<StyledCard href={href}>
 			<LazyLoadImage src={mediumImageUrl} alt={`${media.title || media.name} poster`} />
 		</StyledCard>
 	);
 };
 
-export const MediaCardRef = forwardRef<any, MediaCardProps>(({ media }, ref) => {
+export const MediaCardRef = forwardRef<any, MediaCardProps>(({ media, href }, ref) => {
 	const mediumImageUrl = `${IMAGES.baseUrl}${IMAGES.posterSizes[342]}${media.poster_path}`;
 
 	return (
-		<StyledCard ref={ref}>
+		<StyledCard ref={ref} href={href}>
 			<LazyLoadImage src={mediumImageUrl} alt={`${media.title || media.name} poster`} />
 		</StyledCard>
 	);

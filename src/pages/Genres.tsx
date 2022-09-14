@@ -75,7 +75,7 @@ const Genres = () => {
 					})}
 				</GenrePageList>
 			</SideBar>
-			<MediaContainer items={data} loading={loading} setPage={setPage} hasMore={hasMore} />
+			<MediaContainer items={data} loading={loading} setPage={setPage} hasMore={hasMore} mediaType={params.type} />
 		</>
 	);
 };

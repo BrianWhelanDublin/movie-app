@@ -1,6 +1,7 @@
 import { Images, Requests } from "../types/types";
 
 export const REQUESTS: Requests = {
+	baseUrl: `https://api.themoviedb.org/3/`,
 	trending: `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_IMDB_API_KEY}`,
 	movieGenres: `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_IMDB_API_KEY}`,
 	tvGenres: `https://api.themoviedb.org/3/genre/tv/list?api_key=${process.env.REACT_APP_IMDB_API_KEY}`,

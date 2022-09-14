@@ -11,6 +11,10 @@ export const StyledHeader = styled.section<DefaultStyleProps>`
 	@media (${device.sm}) {
 		height: 80vh;
 		min-height: 600px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
 	}
 
 	&::after {
@@ -118,5 +122,24 @@ export const GenresItem = styled.li<DefaultStyleProps>`
 
 	@media (${device.md}) {
 		font-size: 16px;
+	}
+`;
+
+export const HeaderPoster = styled.img<DefaultStyleProps>`
+	display: none;
+	@media (${device.sm}) {
+		display: block;
+		width: 220px;
+		position: relative;
+		z-index: 2;
+		margin-right: 5%;
+		box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+	}
+	@media (${device.md}) {
+		width: 280px;
+	}
+	@media (${device.lg}) {
+		width: 360px;
+		margin-right: 10%;
 	}
 `;

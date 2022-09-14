@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { DefaultStyleProps } from "../types/types";
 
-export const StyledCard = styled.div<DefaultStyleProps>`
+export const StyledCard = styled.a<DefaultStyleProps>`
 	/* width: 100%; */
 	transition: all 0.3s ease-in-out;
 	cursor: pointer;
 	border-radius: 5px;
 	position: relative;
 	max-width: 220px;
+	display: block;
 
 	img {
 		width: 100%;
