@@ -8,13 +8,13 @@ export const StyledMediaContainer = styled.div<DefaultStyleProps>`
 	grid-gap: 20px;
 	padding: 5%;
 	min-height: 100vh;
-	margin-top: 160px;
 
 	@media (${device.sm}) {
 		grid-template-columns: repeat(3, 1fr);
 		margin-top: 0;
 		margin-left: 240px;
 		padding: 2.5% 5%;
+		margin-top: 160px;
 	}
 	@media (${device.md}) {
 		grid-template-columns: repeat(4, 1fr);

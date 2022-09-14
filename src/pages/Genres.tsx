@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate, Router, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import MediaContainer from "../components/MediaContainer";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,9 @@ import useFetch from "../hooks/useFetch";
 import usePaginatedQuery from "../hooks/usePaginatedQuery";
 import { REQUESTS } from "../requests/requests";
 import { GenreRequest, MediaItem } from "../types/types";
-import { GenreItemsContainer, GenreLink, GenrePageList, GenresSelect, GenresTitle, GenresTitleContainer } from "./Genres.styles";
+import { GenreItemsContainer, GenreLink, GenrePageList, GenresSelect } from "./Genres.styles";
+import FixedHeader, { FixedHeaderTitle } from "../components/FixedHeader";
+import SideBar from "../components/SideBar";
 
 const Genres = () => {
 	let params = useParams();
@@ -49,19 +51,18 @@ const Genres = () => {
 	return (
 		<>
 			{currentGenre && (
-				<GenresTitleContainer>
-					<GenresTitle>Results for {currentGenre?.name}</GenresTitle>
-
-					<GenresSelect defaultValue={"DEFAULT"} onChange={handleChange}>
-						{genresList?.genres?.map((genre) => (
-							<option key={genre?.id} value={genre?.id === currentGenre?.id ? "DEFAULT" : genre?.id}>
-								{genre.name}
-							</option>
-						))}
-					</GenresSelect>
-				</GenresTitleContainer>
+				<FixedHeader>
+					<FixedHeaderTitle>Results for {currentGenre?.name}</FixedHeaderTitle>
+				</FixedHeader>
 			)}
-			<GenreItemsContainer>
+			<SideBar>
+				<GenresSelect defaultValue={"DEFAULT"} onChange={handleChange}>
+					{genresList?.genres?.map((genre) => (
+						<option key={genre?.id} value={genre?.id === currentGenre?.id ? "DEFAULT" : genre?.id}>
+							{genre.name}
+						</option>
+					))}
+				</GenresSelect>
 				<GenrePageList>
 					{genresList?.genres?.map((genre) => {
 						if (genre?.id !== currentGenre?.id) {
@@ -73,8 +74,8 @@ const Genres = () => {
 						}
 					})}
 				</GenrePageList>
-				<MediaContainer items={data} loading={loading} setPage={setPage} hasMore={hasMore} />
-			</GenreItemsContainer>
+			</SideBar>
+			<MediaContainer items={data} loading={loading} setPage={setPage} hasMore={hasMore} />
 		</>
 	);
 };

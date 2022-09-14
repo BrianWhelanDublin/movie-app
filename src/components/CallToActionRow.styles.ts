@@ -66,7 +66,7 @@ export const StyledCallToActionRow = styled.section<DefaultStyleProps>`
 export const CtaContent = styled.div<DefaultStyleProps>`
 	position: absolute;
 	z-index: 2;
-	right: 5%;
+	right: 2.5%;
 	top: 20%;
 	width: 50%;
 	height: 180px;
@@ -79,9 +79,10 @@ export const CtaContent = styled.div<DefaultStyleProps>`
 
 	@media (${device.sm}) {
 		height: 375px;
+		width: 45%;
 	}
 
-	@media (${device.xl}) {
+	@media (${device.xxl}) {
 		height: 480px;
 		right: 10%;
 	}
@@ -107,6 +108,7 @@ export const CtaContent = styled.div<DefaultStyleProps>`
 
 export const CtaInfo = styled.div<DefaultStyleProps>`
 	width: 80%;
+	max-width: 300px;
 	font-size: 12px;
 	display: flex;
 	flex-direction: row;
@@ -114,6 +116,9 @@ export const CtaInfo = styled.div<DefaultStyleProps>`
 	justify-content: space-between;
 	span {
 		display: block;
+	}
+	@media (${device.sm}) {
+		font-size: 18px;
 	}
 `;
 
