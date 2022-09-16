@@ -11,7 +11,6 @@ interface PersonCardProps {
 const PersonCard: React.FC<PersonCardProps> = ({ person }) => {
 	const imageUrl = `${IMAGES.baseUrl}${IMAGES.profileSizes[185]}`;
 
-	console.log(person);
 	return (
 		<StyledPersonCard>
 			<LazyLoadImage

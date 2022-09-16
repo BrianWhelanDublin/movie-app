@@ -49,7 +49,9 @@ const Header: React.FC<HeaderProps> = ({ media, genres, showPoster, showButton =
 					</GenresList>
 				)}
 
-				{showButton && <Button href={"#"}>Find Out More</Button>}
+				{showButton && (
+					<Button href={`${params?.type ?? (media as MediaItem).media_type === "tv" ? "tv" : "movie"}/${media?.id}`}>Find Out More</Button>
+				)}
 			</HeaderContent>
 			{showPoster && <HeaderPoster src={poster} />}
 		</StyledHeader>

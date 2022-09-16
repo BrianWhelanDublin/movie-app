@@ -2,8 +2,12 @@ import styled from "styled-components";
 import { device } from "../assets/styles/breakpoints";
 import { DefaultStyleProps } from "../types/types";
 
-export const SliderContainer = styled.div<DefaultStyleProps>`
-	--items-per-screen: 2;
+interface SliderProps extends DefaultStyleProps {
+	singleSlide?: boolean;
+}
+
+export const SliderContainer = styled.div<SliderProps>`
+	--items-per-screen: ${(props) => (props.singleSlide ? 1 : 2)};
 	padding: 20px 0;
 	width: 100%;
 	overflow-x: scroll;
@@ -11,19 +15,19 @@ export const SliderContainer = styled.div<DefaultStyleProps>`
 
 	@media (${device.xs}) {
 		overflow-x: hidden;
-		--items-per-screen: 3;
+		--items-per-screen: ${(props) => (props.singleSlide ? 1 : 3)};
 	}
 	@media (${device.md}) {
-		--items-per-screen: 4;
+		--items-per-screen: ${(props) => (props.singleSlide ? 1 : 4)};
 	}
 	@media (${device.lg}) {
-		--items-per-screen: 5;
+		--items-per-screen: ${(props) => (props.singleSlide ? 1 : 5)};
 	}
 	@media (${device.xl}) {
-		--items-per-screen: 6;
+		--items-per-screen: ${(props) => (props.singleSlide ? 1 : 6)};
 	}
 	@media (${device.xxl}) {
-		--items-per-screen: 7;
+		--items-per-screen: ${(props) => (props.singleSlide ? 1 : 7)};
 	}
 `;
 

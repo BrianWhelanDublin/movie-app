@@ -1,14 +1,15 @@
 import { Scalars } from "../types/types";
-import { StyledButton, StyledLinkButton } from "./Button.styles";
+import { StyledButton } from "./Button.styles";
 
 interface ButtonProps {
 	children: React.ReactNode;
 	onClick?: (e: any) => void;
 	href?: Scalars["String"];
 	varient?: "filled" | "outline";
+	target?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, onClick, href, varient = "outline" }) => {
+const Button: React.FC<ButtonProps> = ({ children, onClick, href, varient = "outline", target }) => {
 	if (!href)
 		return (
 			<StyledButton type="button" onClick={onClick} varient={varient}>
@@ -17,9 +18,9 @@ const Button: React.FC<ButtonProps> = ({ children, onClick, href, varient = "out
 		);
 
 	return (
-		<StyledLinkButton href={href} varient={varient}>
+		<StyledButton as="a" href={href} varient={varient} target={target}>
 			{children}
-		</StyledLinkButton>
+		</StyledButton>
 	);
 };
 

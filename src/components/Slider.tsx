@@ -6,14 +6,16 @@ import { debounce } from "../utils/helpers";
 
 interface SliderProps {
 	children: React.ReactNode | Array<React.ReactNode>;
+	singleSlide?: boolean;
 }
 
-const Slider: React.FC<SliderProps> = ({ children }) => {
+const Slider: React.FC<SliderProps> = ({ children, singleSlide }) => {
 	const container = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>;
 	const innerContainer = useRef<HTMLDivElement>() as MutableRefObject<HTMLDivElement>;
 	const numberOfCards = React.Children.toArray(children).length;
 	const [index, _setIndex] = useState<number>(0);
 	const currentIndex = useRef<number>(0);
+	const [showArrows, setShowArrows] = useState<boolean>(true);
 
 	const setIndex = (data: number) => {
 		currentIndex.current = data;
@@ -21,12 +23,24 @@ const Slider: React.FC<SliderProps> = ({ children }) => {
 	};
 
 	useEffect(() => {
+		const itemsPerScreen = parseInt(getComputedStyle(innerContainer.current).getPropertyValue("--items-per-screen"));
+		if (itemsPerScreen > numberOfCards) {
+			setShowArrows(false);
+		}
+
 		const rezize = () => {
 			const itemsPerScreen = parseInt(getComputedStyle(innerContainer.current).getPropertyValue("--items-per-screen"));
 			const cur = currentIndex.current;
 			const itemsScrolled = itemsPerScreen * cur;
 			const itemsLeft = numberOfCards - itemsPerScreen - itemsScrolled;
-			if (itemsLeft <= 0) {
+
+			if (itemsPerScreen < numberOfCards) {
+				setShowArrows(true);
+			} else {
+				setShowArrows(false);
+			}
+
+			if (itemsLeft <= 0 && itemsPerScreen < numberOfCards) {
 				setIndex(cur - 1 + (numberOfCards - itemsScrolled) / itemsPerScreen);
 			}
 		};
@@ -61,11 +75,13 @@ const Slider: React.FC<SliderProps> = ({ children }) => {
 
 	return (
 		<>
-			<ArrowContainer>
-				<BsArrowLeft onClick={() => handleClick("left", index - 1)} />
-				<BsArrowRight onClick={() => handleClick("right", index + 1)} />
-			</ArrowContainer>
-			<SliderContainer ref={container}>
+			{showArrows && (
+				<ArrowContainer>
+					<BsArrowLeft onClick={() => handleClick("left", index - 1)} />
+					<BsArrowRight onClick={() => handleClick("right", index + 1)} />
+				</ArrowContainer>
+			)}
+			<SliderContainer ref={container} singleSlide={singleSlide}>
 				<SliderInnerContainer style={{ transform: `translateX(calc(${index} * -100%))` }} ref={innerContainer}>
 					{React.Children.map(children, (child) => {
 						return <SliderItem>{child}</SliderItem>;

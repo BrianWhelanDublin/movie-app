@@ -19,9 +19,7 @@ const Search: React.FC = () => {
 
 	const { data, error, loading, hasMore } = usePaginatedQuery<MediaItem>(request, page);
 
-	console.log(data, error);
 	const handleChange = debounce((e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(e.target.value);
 		window.scrollTo(0, 0);
 		setPage(1);
 		setValue(e.target.value);
@@ -30,7 +28,6 @@ const Search: React.FC = () => {
 	const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPage(1);
 		setCurrentRadioValue(e.target.value);
-		console.log(e.target.value);
 	};
 
 	return (

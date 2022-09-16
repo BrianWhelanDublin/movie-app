@@ -216,6 +216,23 @@ export interface Season {
 	season_number: Maybe<Scalars["Int"]>;
 }
 
+export interface Author {
+	avatar_path?: Maybe<Scalars["String"]>;
+	name?: Maybe<Scalars["String"]>;
+	rating?: Maybe<Scalars["Int"]>;
+	username?: Maybe<Scalars["String"]>;
+}
+
+export interface Review {
+	author?: Maybe<Scalars["String"]>;
+	author_details?: Author;
+	content?: Maybe<Scalars["String"]>;
+	created_at?: Maybe<Scalars["String"]>;
+	id?: Maybe<Scalars["String"]>;
+	updated_at?: Maybe<Scalars["String"]>;
+	url?: Maybe<Scalars["String"]>;
+}
+
 /**
  * Media Api point request return
  */
@@ -240,6 +257,14 @@ export interface CreditsRequest {
 	id: Scalars["Int"];
 	cast: Array<Person>;
 	crew: Array<Person>;
+}
+
+export interface ReviewRequest {
+	id: Scalars["Int"];
+	page: Scalars["Int"];
+	results: Array<Review>;
+	total_pages: Scalars["Int"];
+	total_results: Scalars["Int"];
 }
 
 /**

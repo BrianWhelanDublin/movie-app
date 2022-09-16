@@ -20,8 +20,6 @@ const Genres = () => {
 	let request = `${params?.type === "movie" ? REQUESTS.moviesByGenre : REQUESTS.tvByGenre}${genre}&page=${page}`;
 	let genreRequest = params.type === "movie" ? REQUESTS.movieGenres : REQUESTS.tvGenres;
 
-	console.log(request);
-
 	const { data: genresList } = useFetch<GenreRequest>(genreRequest);
 	const { data, error, loading, hasMore } = usePaginatedQuery<MediaItem>(request, page);
 
@@ -45,8 +43,6 @@ const Genres = () => {
 	if (error) {
 		return <p>Something has gone wrong.... </p>;
 	}
-
-	console.log(data, loading);
 
 	return (
 		<>

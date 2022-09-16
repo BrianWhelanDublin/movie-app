@@ -19,7 +19,10 @@ const CreditsRow: React.FC<CreditsRowProps> = ({ id, mediaType }) => {
 
 	const { data, error } = useFetch<CreditsRequest>(request);
 
-	console.log(data);
+	if (error) {
+		return <p>Error loading cast</p>;
+	}
+
 	return (
 		<StyledRow>
 			<RowTitle>Cast</RowTitle>
