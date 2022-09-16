@@ -177,6 +177,12 @@ export interface Person {
 	id?: Maybe<Scalars["Int"]>;
 	name?: Maybe<Scalars["String"]>;
 	profile_path?: Maybe<Scalars["String"]>;
+	cast_id?: Maybe<Scalars["Int"]>;
+	character?: Maybe<Scalars["String"]>;
+	known_for_department?: Maybe<Scalars["String"]>;
+	order?: Maybe<Scalars["Int"]>;
+	original_name?: Maybe<Scalars["String"]>;
+	popularity?: Maybe<Scalars["Int"]>;
 }
 
 export interface Episode {
@@ -228,6 +234,12 @@ export interface Genres {
 
 export interface GenreRequest {
 	genres: Array<Genres>;
+}
+
+export interface CreditsRequest {
+	id: Scalars["Int"];
+	cast: Array<Person>;
+	crew: Array<Person>;
 }
 
 /**

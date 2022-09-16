@@ -9,9 +9,10 @@ interface HeaderProps {
 	media: MediaItem | MovieDetails | TvDetails;
 	genres?: Array<Genres>;
 	showPoster?: boolean;
+	showButton?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ media, genres, showPoster }) => {
+const Header: React.FC<HeaderProps> = ({ media, genres, showPoster, showButton = true }) => {
 	let params = useParams();
 	const background = `${IMAGES.baseUrl}${IMAGES.backdropSizes.original}${media?.backdrop_path}`;
 	const poster = `${IMAGES.baseUrl}${IMAGES.posterSizes[500]}${media?.poster_path}`;
@@ -48,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({ media, genres, showPoster }) => {
 					</GenresList>
 				)}
 
-				<Button href={"#"}>Find Out More</Button>
+				{showButton && <Button href={"#"}>Find Out More</Button>}
 			</HeaderContent>
 			{showPoster && <HeaderPoster src={poster} />}
 		</StyledHeader>

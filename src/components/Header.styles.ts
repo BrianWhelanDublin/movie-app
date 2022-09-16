@@ -42,12 +42,12 @@ export const HeaderContent = styled.div<DefaultStyleProps>`
 
 	@media (${device.sm}) {
 		margin-right: auto;
-		padding: 10% 10% 5% 7.5%;
+		padding: 10% 5% 5% 7.5%;
 	}
 
 	@media (${device.lg}) {
 		width: 75%;
-		padding: 10% 10% 10% 7.5%;
+		padding: 10% 5% 10% 7.5%;
 	}
 
 	@media (${device.xl}) {
@@ -68,7 +68,7 @@ export const HeaderTitle = styled.h1<DefaultStyleProps>`
 	}
 
 	@media (${device.md}) {
-		font-size: 70px;
+		font-size: 56px;
 		margin-bottom: 30px;
 	}
 `;
@@ -136,10 +136,14 @@ export const HeaderPoster = styled.img<DefaultStyleProps>`
 		box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 	}
 	@media (${device.md}) {
-		width: 280px;
+		width: 260px;
 	}
-	@media (${device.lg}) {
-		width: 360px;
+	@media (${device.xl}) {
+		width: 300px;
+		margin-right: 10%;
+	}
+	@media (${device.xxl}) {
+		width: 340px;
 		margin-right: 10%;
 	}
 `;

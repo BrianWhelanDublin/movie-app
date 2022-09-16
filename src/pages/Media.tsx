@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import CreditsRow from "../components/CreditsRow";
 import Header from "../components/Header";
 import useFetch from "../hooks/useFetch";
 import { REQUESTS } from "../requests/requests";
@@ -11,7 +12,12 @@ const Media = () => {
 	let request = `${REQUESTS.baseUrl}${params.type === "series" ? "tv" : "movie"}/${params.id}?api_key=${process.env.REACT_APP_IMDB_API_KEY}`;
 	const { data, error, status } = useFetch<MovieDetails | TvDetails>(request);
 	console.log(request, data);
-	return data ? <Header media={data} showPoster={true} /> : null;
+	return (
+		<>
+			{data && <Header media={data} showPoster={true} showButton={false} />}
+			<CreditsRow id={params.id as string} mediaType={params.type as string} />
+		</>
+	);
 };
 
 export default Media;

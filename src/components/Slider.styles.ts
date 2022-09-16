@@ -9,7 +9,7 @@ export const SliderContainer = styled.div<DefaultStyleProps>`
 	overflow-x: scroll;
 	overflow-y: hidden;
 
-	@media (${device.sm}) {
+	@media (${device.xs}) {
 		overflow-x: hidden;
 		--items-per-screen: 3;
 	}
