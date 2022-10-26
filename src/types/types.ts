@@ -233,6 +233,19 @@ export interface Review {
 	url?: Maybe<Scalars["String"]>;
 }
 
+export interface Video {
+	id?: Maybe<Scalars["String"]>;
+	iso_639_1?: Maybe<Scalars["String"]>;
+	iso_3166_1?: Maybe<Scalars["String"]>;
+	key?: Maybe<Scalars["String"]>;
+	name?: Maybe<Scalars["String"]>;
+	official?: Maybe<Scalars["Boolean"]>;
+	published_at?: Maybe<Scalars["String"]>;
+	site?: Maybe<Scalars["String"]>;
+	size?: Maybe<Scalars["Int"]>;
+	type?: Maybe<Scalars["String"]>;
+}
+
 /**
  * Media Api point request return
  */
@@ -265,6 +278,11 @@ export interface ReviewRequest {
 	results: Array<Review>;
 	total_pages: Scalars["Int"];
 	total_results: Scalars["Int"];
+}
+
+export interface VideoRequest {
+	id: Scalars["Int"];
+	results: Array<Video>;
 }
 
 /**
